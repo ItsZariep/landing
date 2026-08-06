@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div id="main-container">
+<div class="homecontainer">
+	<div class="glancewelcome">
+		<div>
+			<h1>ItsZariep</h1>
+			<h3>{{ .Site.Params.Description }}</h3>
+<!-- 				<p>Available Editions:</p> -->
+				{{ partial "miniglance.html" . }}
+		</div>
+		<div class="cereuslogo">
+			<img class="glance-banner" src="{{ "/img/banner.webp" | relURL }}" width="100%" />
+		</div>
+	</div>
+<div>
+
+<div class="post-postcontent">
+	{{ (.Site.GetPage "aboutme.md").Content }}
+</div>
+
+{{ partial "postgrid.html" . }}
+	</div>
+	</div>
+{{ end }}

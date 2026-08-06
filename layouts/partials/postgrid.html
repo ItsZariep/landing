@@ -1,0 +1,53 @@
+{{ $indextype := .Params.indextype }}
+
+{{ if eq $indextype "glance" }}
+	<!-- Chapters section -->
+	{{ $chapters := where .Site.RegularPages "Section" "glance" }}
+	{{ $grouped := dict }}
+	{{ range $chapters }}
+		{{ $section := .Params.section | default "Uncategorized" }}
+		{{ $existing := index $grouped $section | default slice }}
+		{{ $updated := $existing | append . }}
+		{{ $grouped = merge $grouped (dict $section $updated) }}
+	{{ end }}
+	<div class="chapters-container">
+		{{ range $section, $items := $grouped }}
+			<h1>{{ $section }}</h1>
+			<div class="glance-container">
+				{{ range sort $items "Params.order" }}
+					{{ $accentbg := .Params.accentbg | default "#111111" }}
+					{{ $accentfg := .Params.accentfg | default "#eeeeee" }}
+					{{ $postTitle := .Title | urlize }}
+
+					<!-- Updated URL format using the image/page properties -->
+					<a href="{{ .Params.target }}" class="post-link" target="_blank" rel="noopener noreferrer">
+						<article id="{{ .Title }}" class="glance-card" style="--accent-bg: {{ $accentbg }}; --fg: {{ $accentfg }};">
+							<div class="glance-image-wrapper">
+								<!-- Updated to use .Params.image directly from front matter -->
+								<img src="{{ .Params.image }}" alt="{{ .Title }}" class="glance-image" />
+							</div>
+							<div class="post-info">
+								{{ with .Params.categories }}
+									<h3 class="post-labels">{{ delimit . " | " }}</h3>
+								{{ end }}
+								<h2 class="post-title">{{ .Title }}</h2>
+								{{ with .Description }}
+									<p class="post-description">{{ . }}</p>
+								{{ end }}
+							</div>
+						</article>
+					</a>
+				{{ end }}
+			</div>
+		{{ end }}
+	</div>
+
+{{ else }}
+	<!-- Fallback content -->
+	<div style="grid-column: 1 / -1;">
+		<p>No content found for this page type. Please make sure you defined 
+			<code class="language-plaintext highlighter-rouge">indextype: posts</code>
+			or <code class="language-plaintext highlighter-rouge">indextype: chapters</code>.
+		</p>
+	</div>
+{{ end }}

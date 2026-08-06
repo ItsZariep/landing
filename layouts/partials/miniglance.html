@@ -1,0 +1,15 @@
+<!-- Condensed glance links -->
+{{ $chapters := where .Site.RegularPages "Section" "glance" }}
+<div class="glance-condensed">
+	{{ range sort $chapters "Params.order" }}
+		{{/* Check if miniicon is not false (adjust the param name if it's Params.miniicon) */}}
+		{{ if ne .Params.miniicon false }}
+			{{ $title := .Title }}
+			<a class="dwn" href="{{ .Params.target }}" target="_blank" rel="noopener noreferrer">
+				<code>
+					<img class="minilogo" src="{{ .Params.image }}" alt="{{ $title }} logo">
+				</code>
+			</a>
+		{{ end }}
+	{{ end }}
+</div>
