@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ItsZariep</title>
+	<noscript>
+		<meta http-equiv="refresh" content="0; url=/en/">
+	</noscript>
+	<script>
+		(function ()
+		{
+			var supported = ['en', 'es', 'pt'];
+			try
+			{
+				var stored = localStorage.getItem('lang-redirect');
+				if (stored)
+				{
+					window.location.replace('/' + stored + '/');
+					return;
+				}
+				var langs = navigator.languages || [navigator.language || 'en'];
+				var match = 'en';
+				for (var i = 0; i < langs.length; i++)
+				{
+					var code = langs[i].slice(0, 2).toLowerCase();
+					if (supported.indexOf(code) !== -1)
+					{
+						match = code;
+						break;
+					}
+				}
+				localStorage.setItem('lang-redirect', match);
+				window.location.replace('/' + match + '/');
+			}
+			catch (e)
+			{
+				window.location.replace('/en/');
+			}
+		})();
+	</script>
+</head>
+<body></body>
+</html>

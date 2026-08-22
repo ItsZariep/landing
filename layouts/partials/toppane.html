@@ -20,6 +20,19 @@
 	<!-- Right side of the pane, usually has the navigation buttons, this example also has sub-elements -->
 	<div class="tp-right" id="mobile-menu">
 		<ul class="tp-nav">
+			<ul class="tp-nav">
+				<li class="tp-dropdown">
+					<input type="checkbox" id="lang-toggle" class="dropdown-checkbox">
+					<label for="lang-toggle">Language</label>
+					<ul class="lang-switch tp-dropdown-elements">
+						{{ with .Rotate "language" }}
+							{{ range . }}
+								<li><a href="{{ .RelPermalink }}">{{ .Language.Label }}</a></li>
+							{{ end }}
+						{{ end }}
+					</ul>
+				</li>
+			</ul>
 			<li><a href="https://blog.zariep.com">Blog</a></li>
 			<li><a href="https://projects.zariep.com">Portfolio</a></li>
 			<li class="tp-dropdown">

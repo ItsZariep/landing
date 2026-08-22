@@ -4,15 +4,18 @@
 	<!-- Chapters section -->
 	{{ $chapters := where .Site.RegularPages "Section" "glance" }}
 	{{ $grouped := dict }}
+	{{ $lang := $.Site.Language.Name }}
+	{{ $sectionLabels := index hugo.Data.sections $lang | default hugo.Data.sections.en }}
+
 	{{ range $chapters }}
-		{{ $section := .Params.section | default "Uncategorized" }}
+		{{ $section := .Params.section | default "uncategorized" }}
 		{{ $existing := index $grouped $section | default slice }}
 		{{ $updated := $existing | append . }}
 		{{ $grouped = merge $grouped (dict $section $updated) }}
 	{{ end }}
 	<div class="chapters-container">
 		{{ range $section, $items := $grouped }}
-			<h1>{{ $section }}</h1>
+		<h1>{{ index $sectionLabels $section | default $section }}</h1>
 			<div class="glance-container">
 				{{ range sort $items "Params.order" }}
 					{{ $accentbg := .Params.accentbg | default "#111111" }}
@@ -31,9 +34,11 @@
 									<h3 class="post-labels">{{ delimit . " | " }}</h3>
 								{{ end }}
 								<h2 class="post-title">{{ .Title }}</h2>
-								{{ with .Description }}
-									<p class="post-description">{{ . }}</p>
-								{{ end }}
+								{{ $lang := $.Site.Language.Name }}
+								{{ $desc := .Params.description }}
+								{{ if eq $lang "es" }}{{ with .Params.description_es }}{{ $desc = . }}{{ end }}{{ end }}
+								{{ if eq $lang "pt" }}{{ with .Params.description_pt }}{{ $desc = . }}{{ end }}{{ end }}
+								{{ with $desc }}<p class="post-description">{{ . }}</p>{{ end }}
 							</div>
 						</article>
 					</a>

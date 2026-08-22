@@ -51,6 +51,19 @@ code {
 	border-radius: 16px;
 }
 
+.tp-dropdown-elements li {
+	width: 100%;
+}
+
+.tp-dropdown-elements a {
+	display: block;
+	width: 85%;
+	box-sizing: border-box;
+	padding: 8px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
 .tp-dropdown {
     align-content: center;
 }

@@ -1,14 +1,33 @@
 baseURL = 'https://zariep.com'
-locale = 'es-MX'
-defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = false
-
 title = 'ItsZariep'
 theme = 'Tessera'
 enableSymlinks = true
 
-[security]
-  enableInlineShortcodes = true
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+disableDefaultLanguageRedirect = true
+
+[languages]
+	[languages.en]
+		label = "English"
+		weight = 1
+		contentDir = "content"
+		[languages.en.params]
+			description = 'Open source developer, independent, just for research, hobby and convenience'
+
+	[languages.es]
+		label = "Español"
+		weight = 2
+		contentDir = "content.es"
+		[languages.es.params]
+			description = 'Desarrollador de código abierto, independiente, solo para investigación, hobby y conveniencia'
+
+	[languages.pt]
+		label = "Português"
+		weight = 3
+		contentDir = "content.pt"
+		[languages.pt.params]
+			description = 'Desenvolvedor de código aberto, independente, apenas para pesquisa, hobby e conveniência'
 
 [caches]
   [caches.images]
@@ -38,7 +57,6 @@ posts = "/:slug/"
 
 [params]
 	author = "ItsZariep"
-	description = 'Open source developer, independent, just for research, hobby and convenience'
 	[[params.social_links]]
 		name = "Ko-fi"
 		url = "https://ko-fi.com/itszariep"
