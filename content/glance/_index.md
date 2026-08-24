@@ -1,4 +1,0 @@
----
-title: "ItsZariep"
-indextype: "glance"
----

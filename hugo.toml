@@ -6,6 +6,7 @@ enableSymlinks = true
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 disableDefaultLanguageRedirect = true
+disableKinds = ["rss", "taxonomy", "term"]
 
 [languages]
 	[languages.en]
@@ -32,16 +33,6 @@ disableDefaultLanguageRedirect = true
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
-
-[mediaTypes]
-  [mediaTypes."application/rss+xml"]
-    suffixes = ["xml"]
-
-[outputFormats]
-  [outputFormats.RSS]
-    mediaType = "application/rss+xml"
-    baseName = "feed"
-    isPlainText = true
 
 [permalinks]
 posts = "/:slug/"

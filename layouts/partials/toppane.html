@@ -23,7 +23,7 @@
 			<ul class="tp-nav">
 				<li class="tp-dropdown">
 					<input type="checkbox" id="lang-toggle" class="dropdown-checkbox">
-					<label for="lang-toggle">Language</label>
+					<label for="lang-toggle">{{ i18n "language" }}</label>
 					<ul class="lang-switch tp-dropdown-elements">
 						{{ with .Rotate "language" }}
 							{{ range . }}
@@ -33,12 +33,11 @@
 					</ul>
 				</li>
 			</ul>
-			<li><a href="https://blog.zariep.com">Blog</a></li>
-			<li><a href="https://projects.zariep.com">Portfolio</a></li>
+			<li><a href="https://blog.zariep.com">{{ i18n "blog" }}</a></li>
+			<li><a href="https://projects.zariep.com">{{ i18n "portfolio" }}</a></li>
 			<li class="tp-dropdown">
 				<input type="checkbox" id="social-toggle" class="dropdown-checkbox">
-				<label for="social-toggle">Donate</label>
-				<!-- Lists all site social links, declare it on your config.toml/yaml -->
+				<label for="social-toggle">{{ i18n "donate" }}</label>
 				<ul class="tp-dropdown-elements">
 					{{ range .Site.Params.social_links }}
 					<li>

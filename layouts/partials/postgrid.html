@@ -1,8 +1,8 @@
 {{ $indextype := .Params.indextype }}
 
-{{ if eq $indextype "glance" }}
+{{ if eq $indextype "landing" }}
 	<!-- Chapters section -->
-	{{ $chapters := where .Site.RegularPages "Section" "glance" }}
+	{{ $chapters := where .Site.RegularPages "Section" "landing" }}
 	{{ $grouped := dict }}
 	{{ $lang := $.Site.Language.Name }}
 	{{ $sectionLabels := index hugo.Data.sections $lang | default hugo.Data.sections.en }}
