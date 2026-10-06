@@ -239,6 +239,18 @@ input[type="text"] {
 		display:none;
 }
 
+.badges {
+	display: flex;
+	gap: 10px;
+}
+
+.badges img {
+	width: 75%;
+	min-width: 15rem;
+	max-width: 20rem;
+	height: auto;
+	object-fit: contain;
+}
 
 @media only screen and (max-width: 768px) and (max-aspect-ratio: 1/1)
 {
@@ -259,6 +271,16 @@ input[type="text"] {
 		flex-direction: row-reverse;
 	}
 
+	.badges {
+		flex-direction: column;
+	}
+	.badges img {
+		width: 100%;
+		min-width: 20rem;
+		max-width: 30rem;
+		height: auto;
+		object-fit: contain;
+	}
 /*	.glance-condensed {
 		display: inline-flex;
 		gap: 1rem;
